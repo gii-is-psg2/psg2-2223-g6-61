@@ -2,63 +2,73 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
-<modelVersion>4.0.0</modelVersion>
-<groupId>es.us.psg2</groupId>
-<artifactId> spring-petclinic.psg2.2223-G6-61</artifactId>
-<version>1.0.0</version>
-<name>PSG2-2223-G6-61 Petclinic</name>
-
-<parent>
-	<groupId>org.springframework.boot</groupId> 
-	<artifactId>spring-boot-starter-parent</artifactId>
-	<version>2.2.4.RELEASE</version>
-</parent>
-
-
-
-<developers>
-	<!-- 
-		<developer>
-		<id>uvus</id>
-		<name>Nombre</name>
-		<email>uvus@alum.us.es</email>
-		</developer>
-	-->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>es.us.psg2</groupId>
+	<artifactId> spring-petclinic.psg2.2223-G6-61</artifactId>
+	<version>1.0.0</version>
+	<name>PSG2-2223-G6-61 Petclinic</name>
+	
+	<parent>
+		<groupId>org.springframework.boot</groupId> 
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.4.RELEASE</version>
+	</parent>
+	
+	
+	
+	<developers>
+		<!-- 
+			<developer>
+			<id>uvus</id>
+			<name>Nombre</name>
+			<email>uvus@alum.us.es</email>
+			</developer>
+		-->
+		
 		<!-- Olegario -->
-
-
-
-
-
-
+	
+	
+	
+	
+	
+	
 		<!-- Miguel Angel -->
-
-
-
-
-
-
+	
+	
+	
+	
+	
+	
 		<!-- Isabel -->
-
-
-
-
-
-
+	
+	
+	
+	
+	
+	
 		<!-- Manuel -->
-
-
-
-
-
-
+		
+		<developer>
+			<id>mangoncac</id>
+			<name>Manuel González Cáceres</name>
+			<email>mangoncac@alum.us.es</email>
+			<url>https://github.com/magonk</url>
+			<roles>
+		        <role>scrum master</role>
+		        <role>developer</role>
+	    	</roles>
+		    <properties>
+		    	<picUrl>https://avatars.githubusercontent.com/u/80255177?v=4</picUrl>
+		    </properties>
+		</developer>		
+		
 		<!-- Samuel -->
-
-
-
-
-
-
+	
+	
+	
+	
+	
+	
 		<!-- Fernando -->
 		<developer>
 			<id>fermatgom</id>
@@ -66,25 +76,25 @@
 			<email>fermatgom@alum.us.es</email>
 		</developer>
 	</developers>
-
+	
 	<properties>
-
+	
 		<!-- Generic properties -->
 		<java.version>11</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
+	
 		<!-- Web dependencies -->
 		<webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
 		<webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
 		<webjars-jquery.version>2.2.4</webjars-jquery.version>
 		<wro4j.version>1.8.0</wro4j.version>
-
+	
 		<jacoco.version>0.8.5</jacoco.version>
 		<spring-format.version>0.0.19</spring-format.version>
-
+	
 	</properties>
-
+	
 	<dependencies>
 		<!-- Spring and Spring Boot dependencies -->
 		<dependency>
@@ -166,7 +176,7 @@
 			<artifactId>bootstrap</artifactId>
 			<version>${webjars-bootstrap.version}</version>
 		</dependency>
-
+	
 		<!-- Testing -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -200,7 +210,7 @@
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
-
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -243,7 +253,7 @@
 					</execution>
 				</executions>
 			</plugin>
-
+	
 			<!-- Spring Boot Actuator displays build-related information if a git.properties
 			file is present at the classpath -->
 			<plugin>
@@ -261,60 +271,58 @@
 					<dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat>
 					<generateGitPropertiesFile>true</generateGitPropertiesFile>
 					<generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties
-				</generateGitPropertiesFilename>
-				<failOnNoGitDirectory>false</failOnNoGitDirectory>
-			</configuration>
-		</plugin>
-
-		<plugin>
-			<groupId>ro.isdc.wro4j</groupId>
-			<artifactId>wro4j-maven-plugin</artifactId>
-			<version>${wro4j.version}</version>
-			<executions>
-				<execution>
-					<phase>generate-resources</phase>
-					<goals>
-						<goal>run</goal>
-					</goals>
-				</execution>
-			</executions>
-			<configuration>
-				<wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
-				<cssDestinationFolder>${project.build.directory}/classes/static/resources/css</cssDestinationFolder>
-				<wroFile>${basedir}/src/main/wro/wro.xml</wroFile>
-				<extraConfigFile>${basedir}/src/main/wro/wro.properties</extraConfigFile>
-				<contextFolder>${basedir}/src/main/less</contextFolder>
-			</configuration>
-			<dependencies>
-				<dependency>
-					<groupId>org.webjars</groupId>
-					<artifactId>bootstrap</artifactId>
-					<version>${webjars-bootstrap.version}</version>
-				</dependency>
-				<dependency>
-					<groupId>org.mockito</groupId>
-					<artifactId>mockito-core</artifactId>
-					<version>${mockito.version}</version>
-				</dependency>
-			</dependencies>
-		</plugin>
-
-		<plugin>
-			<groupId>com.google.cloud.tools</groupId>
-			<artifactId>appengine-maven-plugin</artifactId>
-			<version>2.4.4</version>
-		</plugin>
-	</plugins>
-</build>
-
-<!-- Apache 2 license -->
-<licenses>
-	<license>
-		<name>Apache License, Version 2.0</name>
-		<url>https://www.apache.org/licenses/LICENSE-2.0</url>
-	</license>
-</licenses>
-
-
-
+					</generateGitPropertiesFilename>
+					<failOnNoGitDirectory>false</failOnNoGitDirectory>
+				</configuration>
+			</plugin>
+	
+			<plugin>
+				<groupId>ro.isdc.wro4j</groupId>
+				<artifactId>wro4j-maven-plugin</artifactId>
+				<version>${wro4j.version}</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
+					<cssDestinationFolder>${project.build.directory}/classes/static/resources/css</cssDestinationFolder>
+					<wroFile>${basedir}/src/main/wro/wro.xml</wroFile>
+					<extraConfigFile>${basedir}/src/main/wro/wro.properties</extraConfigFile>
+					<contextFolder>${basedir}/src/main/less</contextFolder>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.webjars</groupId>
+						<artifactId>bootstrap</artifactId>
+						<version>${webjars-bootstrap.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.mockito</groupId>
+						<artifactId>mockito-core</artifactId>
+						<version>${mockito.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+	
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
+				<version>2.4.4</version>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<!-- Apache 2 license -->
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+	
 </project>
