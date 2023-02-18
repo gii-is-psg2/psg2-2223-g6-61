@@ -26,7 +26,6 @@
 		-->
 		
 		<!-- Olegario -->
-	
 		<developer>
 			<id>olemornav</id>
 			<name>Olegario Morato Navarro</name>
@@ -48,7 +47,6 @@
 		</developer>	
 	
 		<!-- Manuel -->
-		
 		<developer>
 			<id>mangoncac</id>
 			<name>Manuel González Cáceres</name>
@@ -64,12 +62,19 @@
 		</developer>		
 		
 		<!-- Samuel -->
-	
-	
-	
-	
-	
-	
+		<developer>
+			<id>samalbort</id>
+			<name>Samuel Albalat Ortiz</name>
+			<email>samalbort@alum.us.es</email>
+			<url>https://github.com/magonk</url>
+			<roles>
+		        <role>developer</role>
+	    	</roles>
+		    <properties>
+		    	<picUrl>https://pbs.twimg.com/media/D55-YfvW0AIuFTw.jpg</picUrl>
+		    </properties>
+		</developer>
+
 		<!-- Fernando -->
 		<developer>
 			<id>fermatgom</id>
