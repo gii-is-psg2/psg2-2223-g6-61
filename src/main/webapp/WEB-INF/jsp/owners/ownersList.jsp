@@ -9,15 +9,15 @@
     <h2>Owners</h2>
 
     <table id="ownersTable" class="table table-striped">
-        <thead>
-        <tr>
-            <th style="width: 150px;">Name</th>
-            <th style="width: 200px;">Address</th>
-            <th>City</th>
-            <th style="width: 120px">Telephone</th>
-            <th>Pets</th>
-        </tr>
-        </thead>
+        <thead style="background-color: grey">
+        <tr style="background-color: grey">
+            <th style="width: 150px; background-color: grey">Name</th>
+            <th style="width: 200px; background-color: grey">Address</th>
+            <th style="background-color: grey">City</th>
+            <th style="width: 120px; background-color: grey">Telephone</th>
+            <th style="background-color: grey">Pets</th>
+        </tr style="background-color: grey">
+        </thead style="background-color: grey">
         <tbody>
         <c:forEach items="${selections}" var="owner">
             <tr>
