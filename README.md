@@ -8,7 +8,7 @@ Estándar de código establecido por convención en el lenguaje java:
 ## Política de mensajes de commit
 La estructura de mensajes de commit será la siguiente:
 ```
-[Tipo de commit] [#Número de tarea] Título de la issue que debe coincidir con el que aparece en el proyecto.*ipo de commit] [#Número de tarea] Título de la issue que debe coincidir con el que aparece en el proyecto.*`*
+[Tipo de commit] [#Número de tarea] Título de la issue que debe coincidir con el que aparece en el proyecto.
 ```
 Los tipos de commit que utilizamos son los siguientes:
 
