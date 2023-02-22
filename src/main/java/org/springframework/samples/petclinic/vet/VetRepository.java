@@ -41,6 +41,6 @@ public interface VetRepository extends CrudRepository<Vet, Integer> {
 	 */
 	Collection<Vet> findAll() throws DataAccessException;
 
-    @Query( "SELECT * FROM Specialty" )
+    @Query( "SELECT s FROM Specialty s" )
     Collection<Specialty> findAllSpecialties();
 }

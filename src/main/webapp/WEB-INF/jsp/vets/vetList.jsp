@@ -12,6 +12,7 @@
         <tr>
             <th>Name</th>
             <th>Specialties</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +27,9 @@
                     </c:forEach>
                     <c:if test="${vet.nrOfSpecialties == 0}">none</c:if>
                 </td>
+                <td>
+                   <a class="btn btn-default" href='<spring:url value="/vets/${vet.id}/edit" htmlEscape="true"/>'>Edit Vet</a> 
+                </td>
             </tr>
         </c:forEach>
         </tbody>
@@ -33,9 +37,15 @@
 
     <table class="table-buttons">
         <tr>
-            <td>
+            <td> 	
                 <a href="<spring:url value="/vets.xml" htmlEscape="true" />">View as XML</a>
             </td>            
+        </tr>
+        <tr>
+
+            <td>
+            	<a class="btn btn-default" href='<spring:url value="/vets/new" htmlEscape="true"/>'>Add Vet</a>
+            </td>              
         </tr>
     </table>
 </petclinic:layout>

@@ -23,8 +23,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Juergen Hoeller
@@ -70,16 +74,19 @@ public class VetController {
        return this.vetService.findSpecialties();
     }
 
-    @GetMapping(value = "/vet/{vetId}/edit")
-    public String initUpdateVetForm( @PathVariable("vetId") int vetId, Model model )
+    @GetMapping(value = "/vets/{vetId}/edit")
+    public String initUpdateVetForm( @PathVariable("vetId") int vetId, Map<String, Object> model )
     {
+    	VetForm vetForm = new VetForm();
         Vet vet = this.vetService.findVetById( vetId );
-        model.addAttribute( vet );
+        vetForm.setVet(vet);
+        vetForm.setSpecialties(vet.getSpecialties().toArray(new Specialty[0]));
+        model.put("vetForm",vetForm);
         return VIEW_UPDATE_ADD_VET;
     }
 
-    @PostMapping(value = "/vet/{vetId}/edit")
-    public String processUpdateOwnerForm( @Valid Vet vet, BindingResult result,
+    @PostMapping(value = "/vets/{vetId}/edit")
+    public String processUpdateOwnerForm( @Valid VetForm vetForm, BindingResult result,
                                          @PathVariable("vetId") int vetId )
     {
         if ( result.hasErrors() ) {
@@ -87,27 +94,35 @@ public class VetController {
         }
         else
         {
+        	Vet vet = vetForm.getVet();
+        	for(int i=0; i<vetForm.getSpecialties().length; i++) {
+            	vet.addSpecialty(vetForm.getSpecialties()[i]);
+        	}
             vet.setId( vetId );
             this.vetService.saveVet( vet );
-            return "redirect:/vet/{vetId}";
+            return "redirect:/vets";
         }
     }
 
-    @GetMapping(value = "/vet/new")
+    @GetMapping(value = "/vets/new")
     public String initCreationForm(Map<String, Object> model) {
-        Vet newVet = new Vet();
-        model.put("vet", newVet);
+        model.put("vetForm", new VetForm());
         return VIEW_UPDATE_ADD_VET;
     }
 
-    @PostMapping(value = "/vet/new")
-    public String processCreationForm(@Valid Vet newVet, BindingResult result) {
+    @PostMapping(value = "/vets/new")
+    public String processCreationForm( VetForm vetForm, BindingResult result, Map<String, Object> model) {
         if (result.hasErrors()) {
             return VIEW_UPDATE_ADD_VET;
         }
-        else
-            this.vetService.saveVet( newVet );
+        else {
+        	Vet vet = vetForm.getVet();
+        	for(int i=0; i<vetForm.getSpecialties().length; i++) {
+            	vet.addSpecialty(vetForm.getSpecialties()[i]);
+        	}
+        	this.vetService.saveVet( vet);
+        }
 
-            return "redirect:/owners/" + newVet.getId();
+            return "redirect:/vets";
         }
     }
