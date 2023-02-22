@@ -1,7 +1,17 @@
 package org.springframework.samples.petclinic.hotel;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
 
-public interface BookingRepository extends CrudRepository<Booking, Integer> {
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.repository.Repository;
+
+
+public interface BookingRepository extends Repository<Booking, Integer> {
+	
+	List<Booking> findByPetId(Integer petId);
+	
+	Booking findById(int id) throws DataAccessException;
+	
+	void save(Booking booking) throws DataAccessException;
 
 }
