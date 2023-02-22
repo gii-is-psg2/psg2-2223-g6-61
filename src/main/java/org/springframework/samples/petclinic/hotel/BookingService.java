@@ -23,7 +23,7 @@ public class BookingService {
 	}
 	
 	@Transactional
-	public void saveVisit(Booking booking) throws DataAccessException {
+	public void save(Booking booking) throws DataAccessException {
 		bookingRepository.save(booking);
 	}
 

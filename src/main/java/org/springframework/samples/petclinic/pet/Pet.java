@@ -36,6 +36,7 @@ import org.springframework.beans.support.PropertyComparator;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.model.NamedEntity;
 import org.springframework.samples.petclinic.owner.Owner;
+import org.springframework.samples.petclinic.hotel.Booking;
 
 /**
  * Simple business object representing a pet.
@@ -62,6 +63,9 @@ public class Pet extends NamedEntity {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
 	private Set<Visit> visits;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
+	private Set<Booking> bookings;
 
 	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
@@ -107,6 +111,28 @@ public class Pet extends NamedEntity {
 	public void addVisit(Visit visit) {
 		getVisitsInternal().add(visit);
 		visit.setPet(this);
+	}
+	
+	protected Set<Booking> getBookingsInternal() {
+		if (this.bookings == null) {
+			this.bookings = new HashSet<>();
+		}
+		return this.bookings;
+	}
+	
+	protected void setBookingsInternal(Set<Booking> bookings) {
+		this.bookings = bookings;
+	}
+	
+	public List<Booking> getBookings() {
+		List<Booking> sortedBookings = new ArrayList<>(getBookingsInternal());
+		PropertyComparator.sort(sortedBookings, new MutableSortDefinition("checkInDate", false, false));
+		return Collections.unmodifiableList(sortedBookings);
+	}
+	
+	public void addBooking(Booking booking) {
+		getBookingsInternal().add(booking);
+		booking.setPet(this);
 	}
 
 }
