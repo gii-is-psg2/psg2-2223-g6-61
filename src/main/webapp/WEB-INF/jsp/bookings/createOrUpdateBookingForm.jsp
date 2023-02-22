@@ -34,7 +34,7 @@
             </tr>
         </table>
 
-        <form:form modelAttribute="visit" class="form-horizontal">
+        <form:form modelAttribute="booking" class="form-horizontal">
             <div class="form-group has-feedback">
                 <petclinic:inputField label="Date" name="checkInDate"/>
                 <petclinic:inputField label="Date" name="checkOutDate"/>

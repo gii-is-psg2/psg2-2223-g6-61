@@ -43,13 +43,13 @@ public class BookingController {
 	
 	@GetMapping(value = "/owners/*/pets/{petId}/bookings/new")
 	public String initNewBookingForm(@PathVariable("petId") int petId, Map<String, Object> model) {
-		return "pets/createOrUpdateBookingForm";
+		return "bookings/createOrUpdateBookingForm";
 	}
 	
 	@PostMapping(value = "/owners/{ownerId}/pets/{petId}/bookings/new")
 	public String processNewBookingForm(@Valid Booking booking, BindingResult result) {
 		if (result.hasErrors()) {
-			return "pets/createOrUpdateBookingForm";
+			return "bookings/createOrUpdateBookingForm";
 		}
 		else {
 			this.bookingService.save(booking);
