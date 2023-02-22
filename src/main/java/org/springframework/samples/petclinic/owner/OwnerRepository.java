@@ -32,6 +32,8 @@ import org.springframework.samples.petclinic.owner.OwnerRepository;
  */
 public interface OwnerRepository extends Repository<Owner, Integer> {
 
+	void deleteById(int id);
+
 	/**
 	 * Save an <code>Owner</code> to the data store, either inserting or updating it.
 	 * @param owner the <code>Owner</code> to save
