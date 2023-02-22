@@ -1,12 +1,20 @@
 # Informe técnico de la metodología y la gestión de la configuración
 **[1. Estándares de Código](#_hohjtsklci24)**
+
 **[2. Política de mensajes de commit](#_gmoye6w9s4sc)**
+
 **[3. Estructura de los repositorios y ramas por defecto](#_ln7utkmzdkiq)** 
+
 **[4. Branching strategy, basadas en Git Flow e incluyendo peer reviews](#_nqewzr49jya0)**
+
 **[5. Desarrollo en ramas feature](#_k2x7cl80z42m)**
+
 **[6. Preparación del despliegue](#_edywamrxtwai)**
+
 **[7. Cómo solucionar bugs en producción](#_xz46azgjxca7)**
+
 **[8. Política de versiones](#_66v958dp6ifs)**
+
 ## 1. Estándares de Código
 Estándar de código establecido por convención en el lenguaje java:
 - CamelCase
@@ -16,11 +24,13 @@ Estándar de código establecido por convención en el lenguaje java:
 - ¿Documentación de las funciones con javadoc?
 ### Política de mensajes de commit
 La estructura de mensajes de commit será la siguiente:
+
 **Tipo[!]:Título**
 
 **[Cuerpo]**
 
 **[Pie]**
+
 Los tipos de commit que utilizamos son los siguientes:
 - **feat** : Desarrollo de una nueva funcionalidad
 - **fix** : Corrección de alguna funcionalidad 
@@ -43,6 +53,7 @@ Nuestro repositorio del proyecto seguirá la siguiente estructura:
 - "test". Aquí se encontrarán los tests automatizados del proyecto. 
 - "docs". Carpeta conteniendo todos los documentos de relevancia para el entregable. 
 - Encontraremos además en la carpeta base otros archivos de texto importantes, tales como el pom.xml o readme.md. 
+
 En cuanto a las ramas principales por defecto, tendremos una **rama principal "master"**. A partir de esta rama obtenemos la **segunda rama principal, "develop"**. La rama master contendrá todas las releases terminadas y revisadas. A su vez, la rama "develop" contendrá el código referente al desarrollo que no esté listo para release, ya sea por falta de funcionalidades, un testing lo suficientemente extensivo o cualquier motivo que el equipo estime oportuno. 
 ## 4. Branching strategy, basadas en Git Flow e incluyendo peer reviews
 Como se ha comentado en el punto anterior, se usará **Git Flow** basado en dos ramas principales: **main** y **develop**. Para el desarrollo de funcionalidades, se crearán. 
@@ -53,4 +64,8 @@ Para el despliegue se abrirá una nueva rama a partir de **develop** y nombránd
 ## 7. Cómo solucionar bugs en producción 
 El procedimiento que se ha considerado para tratar bugs que surjan en producción consiste en crear una rama nueva denotada como **bugfix** (bugfix-tagIssue), incluyendo el bug a solucionar. 
 ## 8. Política de versiones 
-En cuanto a las versiones de la aplicación seguiremos la siguiente semántica: **X.Y.Z** Donde X es para versiones con cambios mayores, que rompan la compatibilidad con versiones o APIs anteriores. El segundo número, Y, indica versiones con cambios menores que no rompan la compatibilidad y que incluyan funcionalidad o incrementos sustanciales. Por último la Z sería para parches que arreglan errores, para arreglar comportamientos incorrectos de la aplicación.
+En cuanto a las versiones de la aplicación seguiremos la siguiente semántica: 
+
+**X.Y.Z**
+
+Donde X es para versiones con cambios mayores, que rompan la compatibilidad con versiones o APIs anteriores. El segundo número, Y, indica versiones con cambios menores que no rompan la compatibilidad y que incluyan funcionalidad o incrementos sustanciales. Por último la Z sería para parches que arreglan errores, para arreglar comportamientos incorrectos de la aplicación.
