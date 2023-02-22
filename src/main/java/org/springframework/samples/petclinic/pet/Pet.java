@@ -34,9 +34,9 @@ import javax.persistence.Table;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.samples.petclinic.hotel.Booking;
 import org.springframework.samples.petclinic.model.NamedEntity;
 import org.springframework.samples.petclinic.owner.Owner;
-import org.springframework.samples.petclinic.hotel.Booking;
 
 /**
  * Simple business object representing a pet.
@@ -119,7 +119,7 @@ public class Pet extends NamedEntity {
 		}
 		return this.bookings;
 	}
-	
+
 	protected void setBookingsInternal(Set<Booking> bookings) {
 		this.bookings = bookings;
 	}
