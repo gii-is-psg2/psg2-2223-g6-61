@@ -33,6 +33,8 @@ import org.springframework.data.repository.Repository;
  */
 public interface VetRepository extends Repository<Vet, Integer>{
 
+	void deleteById(int id);
+
 	/**
 	 * Retrieve all <code>Vet</code>s from the data store.
 	 * @return a <code>Collection</code> of <code>Vet</code>s

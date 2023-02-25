@@ -44,6 +44,11 @@ public class UserService {
 		user.setEnabled(true);
 		userRepository.save(user);
 	}
+
+	@Transactional
+	public void deleteUserById(int id) throws DataAccessException {
+		userRepository.deleteById(id);
+	}
 	
 	public Optional<User> findUser(String username) {
 		return userRepository.findById(username);

@@ -23,10 +23,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.owner.Owner;
 import org.springframework.samples.petclinic.owner.OwnerService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
@@ -42,9 +44,12 @@ public class UserController {
 
 	private final OwnerService ownerService;
 
+	private final UserService userService;
+
 	@Autowired
-	public UserController(OwnerService clinicService) {
+	public UserController(OwnerService clinicService, UserService userService) {
 		this.ownerService = clinicService;
+		this.userService = userService;
 	}
 
 	@InitBinder
@@ -69,6 +74,12 @@ public class UserController {
 			this.ownerService.saveOwner(owner);
 			return "redirect:/";
 		}
+	}
+
+	@GetMapping(value = "/users/{userId}/delete")
+	public String deleteUser(@PathVariable("userId") int userId, Model model) {
+		userService.deleteUserById(userId);
+		return "redirect:/users";
 	}
 
 }

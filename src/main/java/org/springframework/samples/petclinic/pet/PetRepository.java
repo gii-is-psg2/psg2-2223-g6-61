@@ -29,6 +29,8 @@ import org.springframework.samples.petclinic.model.BaseEntity;
  * @since 15.1.2013
  */
 public interface PetRepository extends Repository<Pet, Integer> {
+	
+	void deleteById(int id);
 
 	/**
 	 * Retrieve all <code>PetType</code>s from the data store.
