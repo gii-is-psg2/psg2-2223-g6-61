@@ -54,7 +54,7 @@ public class VetController {
 	@GetMapping(value = "/vets/{vetId}/delete")
 	public String deleteOwner(@PathVariable("vetId") int vetId, Model model) {
 		vetService.deleteVetById(vetId);
-		return "redirect:/owners";
+		return "redirect:/vets";
 	}
 
 	@GetMapping(value = { "/vets.xml"})

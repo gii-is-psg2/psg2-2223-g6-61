@@ -147,7 +147,7 @@ public class PetController {
 		}
 	}
 
-	@GetMapping(value = "/owners/{ownerId}/pets/{petId}/delete")
+	@GetMapping(value = "/pets/{petId}/delete")
 	public String deletePet(@PathVariable("petId") int petId, ModelMap model) {
 		petService.deletePetById(petId);
 		return "redirect:/owners/{ownerId}";
