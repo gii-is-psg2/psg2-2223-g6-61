@@ -118,6 +118,12 @@ public class PetController {
 		return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
 	}
 
+	@GetMapping(value = "/pets/{petId}/delete")
+	public String deletePet(@PathVariable("petId") int petId) {
+		this.petService.deletePetById(petId);
+		return "redirect:/owners/{ownerId}";
+	}
+
     /**
      *
      * @param pet
@@ -145,12 +151,6 @@ public class PetController {
                     }
 			return "redirect:/owners/{ownerId}";
 		}
-	}
-
-	@GetMapping(value = "/pets/{petId}/delete")
-	public String deletePet(@PathVariable("petId") int petId, ModelMap model) {
-		petService.deletePetById(petId);
-		return "redirect:/owners/{ownerId}";
 	}
 
 }
