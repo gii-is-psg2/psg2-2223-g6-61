@@ -13,6 +13,7 @@
         <tr>
             <th><fmt:message key="vet.name"/></th>
             <th><fmt:message key="vet.specialty"/></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
