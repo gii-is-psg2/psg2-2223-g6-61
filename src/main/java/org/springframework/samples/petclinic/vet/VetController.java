@@ -58,6 +58,12 @@ public class VetController {
 		return "vets/vetList";
 	}
 
+	@GetMapping(value = "/vets/{vetId}/delete")
+	public String deleteVet(@PathVariable("vetId") int vetId) {
+		vetService.deleteVetById(vetId);
+		return "redirect:/vets";
+	}
+
 	@GetMapping(value = { "/vets.xml"})
 	public @ResponseBody Vets showResourcesVetList() {
 		// Here we are returning an object of type 'Vets' rather than a collection of Vet

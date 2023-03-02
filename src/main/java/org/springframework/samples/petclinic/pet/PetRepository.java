@@ -21,6 +21,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.samples.petclinic.model.BaseEntity;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.jpa.repository.Modifying;
 
 /**
  * Spring Data JPA specialization of the {@link PetRepository} interface
@@ -29,6 +31,11 @@ import org.springframework.samples.petclinic.model.BaseEntity;
  * @since 15.1.2013
  */
 public interface PetRepository extends Repository<Pet, Integer> {
+	
+	@Transactional
+	@Modifying
+	@Query(value="DELETE FROM Pet p WHERE p.id=?1")
+	void deleteById(int petId) throws DataAccessException;
 
 	/**
 	 * Retrieve all <code>PetType</code>s from the data store.

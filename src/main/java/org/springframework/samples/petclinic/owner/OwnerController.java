@@ -116,6 +116,12 @@ public class OwnerController {
 		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
 	}
 
+	@GetMapping(value = "/owners/{ownerId}/delete")
+	public String deleteOwner(@PathVariable("ownerId") int ownerId) {
+		this.ownerService.deleteOwnerById(ownerId);
+		return "redirect:/owners";
+	}
+
 	@PostMapping(value = "/owners/{ownerId}/edit")
 	public String processUpdateOwnerForm(@Valid Owner owner, BindingResult result,
 			@PathVariable("ownerId") int ownerId) {
