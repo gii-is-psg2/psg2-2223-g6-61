@@ -123,6 +123,12 @@ public class PetController {
 		this.petService.deletePetById(petId);
 		return "redirect:/owners/{ownerId}";
 	}
+	
+	@GetMapping(value = "/pets/{petId}/visits/{visitId}/delete")
+	public String deleteVisit(@PathVariable("visitId") int visitId) {
+		this.petService.deleteVisitById(visitId);
+		return "redirect:/owners/{ownerId}";
+	}
 
     /**
      *

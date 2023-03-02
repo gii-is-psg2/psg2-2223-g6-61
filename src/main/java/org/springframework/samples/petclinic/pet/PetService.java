@@ -67,7 +67,7 @@ public class PetService {
 	}
 	
 	@Transactional
-	public void deleteServiceById(int id) throws DataAccessException {
+	public void deleteVisitById(int id) throws DataAccessException {
 		visitRepository.deleteById(id);
 	}
 
