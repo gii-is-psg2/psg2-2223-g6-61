@@ -5,10 +5,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <petclinic:layout pageName="owners">
     <h2>
-        <c:if test="${owner['new']}">New </c:if> Owner
+        <c:if test="${owner['new']}"><fmt:message key="owner.new"/> </c:if> Owner<fmt:message key="owner"/>
     </h2>
     <form:form modelAttribute="owner" class="form-horizontal" id="add-owner-form">
         <div class="form-group has-feedback">
@@ -24,10 +25,10 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
                     <c:when test="${owner['new']}">
-                        <button class="btn btn-default" type="submit">Add Owner</button>
+                        <button class="btn btn-default" type="submit"><fmt:message key="owner.add"/> <fmt:message key="owner"/></button>
                     </c:when>
                     <c:otherwise>
-                        <button class="btn btn-default" type="submit">Update Owner</button>
+                        <button class="btn btn-default" type="submit"><fmt:message key="owner.update"/> <fmt:message key="owner"/></button>
                     </c:otherwise>
                 </c:choose>
             </div>
